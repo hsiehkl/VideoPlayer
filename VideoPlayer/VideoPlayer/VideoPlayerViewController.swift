@@ -11,52 +11,57 @@ import AVFoundation
 
 class VideoPlayerViewController: UIViewController {
     
+    let searchBar = UISearchBar()
     var avPlayer = AVPlayer()
     let avPlayerLayer = AVPlayerLayer()
-    let buttomView = UIView()
-    let searchBar = UISearchBar()
+    let bottomView = UIView()
     let playButton = UIButton()
     let muteButton = UIButton()
     var isPalying = true
     var isMuted = false
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8
-        
         setUpButtomView()
         setupSearchBar()
-
-
+    }
+    
+    override func viewWillLayoutSubviews() {
+        
+        if UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) {
+            
+            self.searchBar.isHidden = true
+            self.bottomView.frame = CGRect(x: 0, y: self.view.frame.height - 44, width: self.view.frame.width, height: 44)
+            playButton.frame = CGRect(x: 30, y: 10 , width: 50, height: 20)
+            muteButton.frame = CGRect(x: self.view.frame.width - 80, y: 10 , width: 60, height: 20)
+            avPlayerLayer.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - 44)
+            
+        } else {
+            
+            self.searchBar.isHidden = false
+            self.bottomView.frame = CGRect(x: 0, y: self.view.frame.height - 44, width: self.view.frame.width, height: 44)
+            playButton.frame = CGRect(x: 30, y: 10 , width: 50, height: 20)
+            muteButton.frame = CGRect(x: self.view.frame.width - 80, y: 10 , width: 60, height: 20)
+            avPlayerLayer.frame = CGRect(x: 0, y: 76, width: self.view.frame.width, height: self.view.frame.height - 126)
+        }
     }
     
     func setUpButtomView() {
+
+        bottomView.backgroundColor = Color.bottomViewColor
         
-        self.buttomView.frame = CGRect(x: 0, y: self.view.frame.height - 44, width: self.view.frame.width, height: 44)
-        
-        buttomView.backgroundColor = Color.buttomViewColor
-        
-        playButton.frame = CGRect(x: 30, y: 10 , width: 50, height: 20)
         playButton.tintColor = UIColor.white
         playButton.addTarget(self, action: #selector(playButtonTaped), for: .touchUpInside)
-        buttomView.addSubview(playButton)
+        bottomView.addSubview(playButton)
         
-        muteButton.frame = CGRect(x: self.view.frame.width - 80, y: 10 , width: 60, height: 20)
         muteButton.tintColor = UIColor.white
         muteButton.addTarget(self, action: #selector(muteButtonTapped), for: .touchUpInside)
-        buttomView.addSubview(muteButton)
+        bottomView.addSubview(muteButton)
         
-        self.view.addSubview(buttomView)
-        
-        buttomView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
+        self.view.addSubview(bottomView)
     }
+
     
     func setupSearchBar() {
         
@@ -118,7 +123,7 @@ class VideoPlayerViewController: UIViewController {
     }
     
     deinit {
-        self.avPlayerLayer.removeObserver(self, forKeyPath: "status")
+        self.avPlayerLayer.removeObserver(self, forKeyPath: "rate")
     }
 
 }
@@ -144,11 +149,7 @@ extension VideoPlayerViewController: UISearchBarDelegate {
         
         self.avPlayer.addObserver(self, forKeyPath: "rate", options: .new, context: nil)
         
-        avPlayerLayer.frame = CGRect(x: 0, y: 76, width: self.view.frame.width, height: self.view.frame.height - 126)
-        
         self.avPlayer.play()
-        
-        
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {

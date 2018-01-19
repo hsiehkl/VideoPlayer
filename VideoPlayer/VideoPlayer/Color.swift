@@ -11,6 +11,6 @@ import UIKit
 struct Color {
     
     static let backgroundColor = UIColor(red: 8/255.0, green: 21/255.0, blue: 35/255.0, alpha: 1)
-    static let buttomViewColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
+    static let bottomViewColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
     
 }
