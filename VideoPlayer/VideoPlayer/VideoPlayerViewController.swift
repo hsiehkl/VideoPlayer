@@ -24,6 +24,8 @@ class VideoPlayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8
+        
         setUpButtomView()
         setupSearchBar()
 
@@ -40,6 +42,7 @@ class VideoPlayerViewController: UIViewController {
         playButton.setTitle("Pause", for: .normal)
         playButton.frame = CGRect(x: 20, y: 10 , width: 50, height: 20)
         playButton.tintColor = UIColor.white
+        
         buttomView.addSubview(playButton)
         
         let muteButton = UIButton()
@@ -56,10 +59,6 @@ class VideoPlayerViewController: UIViewController {
     
     func setupSearchBar() {
         
-//        if UIDevice.current.orientation.isLandscape {
-//            self.searchBar.isHidden = true
-//        }
-        
         searchBar.frame = CGRect(x: 0, y: 20, width: self.view.frame.width, height: 56)
         searchBar.delegate = self
         searchBar.placeholder = "Enter URL of video."
@@ -72,8 +71,34 @@ class VideoPlayerViewController: UIViewController {
 extension VideoPlayerViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = true
+        searchBar.resignFirstResponder()
+        searchBar.setShowsCancelButton(false, animated: true)
+        
+        guard
+            let urlString = searchBar.text,
+            let url = URL(string: urlString)
+        else {
+            return
+        }
+        
+        self.avPlayer = AVPlayer(url: url)
+        self.avPlayerLayer.player = self.avPlayer
+        self.view.layer.addSublayer(self.avPlayerLayer)
+        
+        avPlayerLayer.frame = CGRect(x: 0, y: 76, width: self.view.frame.width, height: self.view.frame.height - 126)
+        
+        self.avPlayer.play()
+        
+        
     }
     
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.text = nil
+    }
 }
