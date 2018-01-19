@@ -11,24 +11,23 @@ import AVFoundation
 
 class VideoPlayerViewController: UIViewController {
     
-    let playerView = UIView()
     var avPlayer = AVPlayer()
     let avPlayerLayer = AVPlayerLayer()
     let buttomView = UIView()
+    let searchBar = UISearchBar()
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-//        playerView.frame = self.view.bounds
-//        self.view.addSubview(playerView)
-//        avplayerLayer.frame = self.view.bounds
+
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUpButtomView()
+        setupSearchBar()
 
-        // Do any additional setup after loading the view.
+
     }
     
     func setUpButtomView() {
@@ -51,10 +50,28 @@ class VideoPlayerViewController: UIViewController {
         
         self.view.addSubview(buttomView)
         
-        
+        buttomView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
     }
     
-    
+    func setupSearchBar() {
+        
+        searchBar.frame = CGRect(x: 0, y: 20, width: self.view.frame.width, height: 56)
+        searchBar.delegate = self
+        searchBar.placeholder = "Pleae enter a video URL."
+        searchBar.tintColor = UIColor.white
+        self.view.addSubview(searchBar)
+        
+        
+    }
+}
 
+extension VideoPlayerViewController: UISearchBarDelegate {
+    
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    
 }
