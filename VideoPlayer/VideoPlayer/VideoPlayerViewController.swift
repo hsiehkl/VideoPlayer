@@ -42,13 +42,11 @@ class VideoPlayerViewController: UIViewController {
         
         buttomView.backgroundColor = Color.buttomViewColor
         
-//        playButton.setTitle("Pause", for: .normal)
         playButton.frame = CGRect(x: 30, y: 10 , width: 50, height: 20)
         playButton.tintColor = UIColor.white
         playButton.addTarget(self, action: #selector(playButtonTaped), for: .touchUpInside)
         buttomView.addSubview(playButton)
         
-//        muteButton.setTitle("Mute", for: .normal)
         muteButton.frame = CGRect(x: self.view.frame.width - 80, y: 10 , width: 60, height: 20)
         muteButton.tintColor = UIColor.white
         muteButton.addTarget(self, action: #selector(muteButtonTapped), for: .touchUpInside)
@@ -71,15 +69,15 @@ class VideoPlayerViewController: UIViewController {
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        
+
         if keyPath == "rate" {
-            
+
             if let rate = change?[.newKey] as? Float {
-                
+
                 if rate == 0.0 {
 
                     isPalying = false
-                    
+
                 } else if rate == 1.0 {
 
                     isPalying = true
@@ -99,7 +97,6 @@ class VideoPlayerViewController: UIViewController {
 
             self.avPlayer.play()
             self.playButton.setTitle("Pause", for: .normal)
-
         }
 
     }
