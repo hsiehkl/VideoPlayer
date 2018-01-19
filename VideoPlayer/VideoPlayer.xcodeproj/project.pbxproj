@@ -13,7 +13,6 @@
 		6BD4E8722011B8750029EC3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD4E8702011B8750029EC3E /* LaunchScreen.storyboard */; };
 		6BD4E87A2011B9270029EC3E /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD4E8792011B9270029EC3E /* VideoPlayerViewController.swift */; };
 		6BD4E87C2011C9360029EC3E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD4E87B2011C9360029EC3E /* Color.swift */; };
-		6BD4E87E2011D1E10029EC3E /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD4E87D2011D1E10029EC3E /* Alert.swift */; };
 		F0F751F1DDB405803CE2F39B /* Pods_VideoPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 763B59C41C19598B6C75385B /* Pods_VideoPlayer.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +27,6 @@
 		6BD4E8732011B8750029EC3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BD4E8792011B9270029EC3E /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		6BD4E87B2011C9360029EC3E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		6BD4E87D2011D1E10029EC3E /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		763B59C41C19598B6C75385B /* Pods_VideoPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VideoPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -75,7 +73,6 @@
 			children = (
 				6BD4E8672011B8750029EC3E /* AppDelegate.swift */,
 				6BD4E8792011B9270029EC3E /* VideoPlayerViewController.swift */,
-				6BD4E87D2011D1E10029EC3E /* Alert.swift */,
 				6BD4E87B2011C9360029EC3E /* Color.swift */,
 				6BD4E86B2011B8750029EC3E /* Main.storyboard */,
 				6BD4E86E2011B8750029EC3E /* Assets.xcassets */,
@@ -222,7 +219,6 @@
 			files = (
 				6BD4E87A2011B9270029EC3E /* VideoPlayerViewController.swift in Sources */,
 				6BD4E8682011B8750029EC3E /* AppDelegate.swift in Sources */,
-				6BD4E87E2011D1E10029EC3E /* Alert.swift in Sources */,
 				6BD4E87C2011C9360029EC3E /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
