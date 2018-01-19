@@ -56,9 +56,9 @@ class VideoPlayerViewController: UIViewController {
     
     func setupSearchBar() {
         
-        if UIDevice.current.orientation.isLandscape {
-            self.searchBar.isHidden = true
-        }
+//        if UIDevice.current.orientation.isLandscape {
+//            self.searchBar.isHidden = true
+//        }
         
         searchBar.frame = CGRect(x: 0, y: 20, width: self.view.frame.width, height: 56)
         searchBar.delegate = self
@@ -70,7 +70,6 @@ class VideoPlayerViewController: UIViewController {
 }
 
 extension VideoPlayerViewController: UISearchBarDelegate {
-    
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
