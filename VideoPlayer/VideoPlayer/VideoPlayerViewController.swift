@@ -34,17 +34,17 @@ class VideoPlayerViewController: UIViewController {
         
         self.buttomView.frame = CGRect(x: 0, y: self.view.frame.height - 50, width: self.view.frame.width, height: 50)
         
-        buttomView.backgroundColor = UIColor.gray
+        buttomView.backgroundColor = Color.buttomViewColor
         
         let playButton = UIButton()
         playButton.setTitle("Pause", for: .normal)
-        playButton.frame = CGRect(x: 20, y: 10 , width: 50, height: 30)
+        playButton.frame = CGRect(x: 20, y: 10 , width: 50, height: 20)
         playButton.tintColor = UIColor.white
         buttomView.addSubview(playButton)
         
         let muteButton = UIButton()
         muteButton.setTitle("Mute", for: .normal)
-        muteButton.frame = CGRect(x: self.view.frame.width - 70, y: 10 , width: 50, height: 30)
+        muteButton.frame = CGRect(x: self.view.frame.width - 70, y: 10 , width: 50, height: 20)
         muteButton.tintColor = UIColor.white
         buttomView.addSubview(muteButton)
         
@@ -56,12 +56,15 @@ class VideoPlayerViewController: UIViewController {
     
     func setupSearchBar() {
         
+        if UIDevice.current.orientation.isLandscape {
+            self.searchBar.isHidden = true
+        }
+        
         searchBar.frame = CGRect(x: 0, y: 20, width: self.view.frame.width, height: 56)
         searchBar.delegate = self
-        searchBar.placeholder = "Pleae enter a video URL."
-        searchBar.tintColor = UIColor.white
+        searchBar.placeholder = "Enter URL of video."
+        searchBar.barTintColor = UIColor.clear
         self.view.addSubview(searchBar)
-        
         
     }
 }

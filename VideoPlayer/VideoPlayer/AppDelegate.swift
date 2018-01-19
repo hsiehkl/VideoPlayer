@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         let homeViewController = VideoPlayerViewController()
-        homeViewController.view.backgroundColor = UIColor.black
+        homeViewController.view.backgroundColor = Color.backgroundColor
         window!.rootViewController = homeViewController
         window!.makeKeyAndVisible()
         return true
