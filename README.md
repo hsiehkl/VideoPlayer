@@ -4,7 +4,7 @@ Small side-project for AVFoundation.
 
 # Feature
 - User can enter URL of a video and the video would automatically start playing.
-- Eqqupped with  mute/unmutea nd play/pause mode.
+- Eqqupped with  mute/unmute and play/pause mode.
 
 ### Screenshot
 <img src="https://github.com/hsiehkl/VideoPlayer/blob/master/VideoPlayer/VideoPlayer/Assets.xcassets/AppIcon.appiconset/Simulator%20Screen%20Shot%20-%20iPhone%208%20Plus%20-%202018-01-24%20at%2021.08.27.png" width = "300" alt="World Map" align=center />
